@@ -10,6 +10,7 @@ dotenv.config();
 //import Routes
 
 const authRoute = require("./routes/auth");
+const postRoute = require("./routes/posts");
 
 //connect to db
 mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true }, () =>
@@ -21,5 +22,6 @@ app.use(express.json());
 
 //Route Middlewares
 app.use("/api/user", authRoute);
+app.use("/api/posts", postRoute); //we are protecting this route
 
 app.listen(3000, () => console.log("Server Running"));
